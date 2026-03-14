@@ -3,6 +3,8 @@
 
 View it here: https://visdesignstudies.github.io/module-two-storytelling-remix-mayamcp5/ 
 
+View my portfolio where it is linked here: https://mayamcpartland.vercel.app/projects
+
 ## The Original Story
 
 **Source:** [Pew Research Center, 2022](https://www.pewresearch.org/internet/2022/08/10/teens-social-media-and-technology-2022/)
