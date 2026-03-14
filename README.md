@@ -71,6 +71,6 @@ Some ways I implemented this:
 
 **It holds attention better.** Something happening on screen as you scroll is just more engaging than a static page. The transitions and highlights give the reader something to look forward to as they move through the piece, which makes it feel less like reading and more like an actual experience.
 
-**It asks something of you.** The consistent need to scroll and other interactions require the reader to do something. That's a different kind of engagement than passive reading. I think it's especially appropriate for a topic like teen mental health, where "oh interesting" and scrolling on feels like the wrong response.
+**It requires action.** The consistent need to scroll and other interactions require the reader to do something. That's a different kind of engagement than passive reading. I think it's especially appropriate for a topic like teen mental health, where "oh interesting" and scrolling on feels like the wrong response.
 
-**The honest tradeoff.** Scrollytelling does slightly constrain the reader more than a free layout does. Someone who wants to compare the negative and positive charts side by side basically can't. This is something I would like to improve upon if I had more time, but I felt the narrative "story" structure was more impactful than the need to directly compare the numbers.
+Scrollytelling does slightly constrain the reader more than a free layout does. Someone who wants to compare the negative and positive charts side by side basically can't. This is something I would like to improve upon if I had more time, but I felt the narrative "story" structure was more impactful than the need to directly compare the numbers.
