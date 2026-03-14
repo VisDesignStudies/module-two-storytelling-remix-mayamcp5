@@ -14,13 +14,14 @@ Promise.all([
   negative,
   positive,
   time,
-  analysis
+  individuals
 ]){
-
   drawIntro(time)
   drawOverallViz(overall, personal, impacts)
-  drawIndividualsViz(analysis)
   drawNegativeViz(negative)
   drawPositiveViz(positive)
+  drawIndividualsViz(individuals)
 
+}).catch(err => {
+  console.warn("Some data files missing — drawing with available data:", err)
 })

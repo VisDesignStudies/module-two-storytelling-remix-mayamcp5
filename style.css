@@ -1,180 +1,521 @@
-/* ------------------------
-  Global body & typography
-------------------------- */
+/* =============================================
+   DESIGN SYSTEM — Editorial / Longform Magazine
+   ============================================= */
+
+:root {
+  --ink:       #1a1614;
+  --ink-soft:  #4a4440;
+  --ink-faint: #8a8280;
+  --paper:     #f7f4f0;
+  --paper-warm:#ede9e3;
+  --red:       #c0392b;
+  --red-light: #e8a090;
+  --blue:      #2c5f8a;
+  --blue-light:#a8c4de;
+  --green:     #2a7a4f;
+  --green-light:#a3d4b5;
+  --gold:      #c8952a;
+  --rule:      #d4cfc9;
+  --shadow:    0 4px 24px rgba(26,22,20,0.10);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Source Serif 4', Georgia, serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
 body {
-  font-family: 'Inter', sans-serif; /* Pudding often uses clean modern sans */
-  max-width: 900px;
-  margin: auto;
-  line-height: 1.6;
-  color: #222;
-  background-color: #fafafa;
-  padding: 0 20px;
-  scroll-behavior: smooth;
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
 }
 
-h1, h2 {
-  font-weight: 700;
-  color: #1a1a1a;
+/* =============================================
+   HERO
+   ============================================= */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  padding: 60px 24px;
+  background: var(--ink);
+  color: var(--paper);
+  position: relative;
+  overflow: hidden;
 }
 
-h1 {
-  font-size: 2.8rem;
-  margin-top: 40px;
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 20% 80%, rgba(192,57,43,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 80% 20%, rgba(44,95,138,0.18) 0%, transparent 70%);
 }
 
-h2 {
-  font-size: 2rem;
-  margin-top: 60px;
+.hero-label {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
   margin-bottom: 20px;
-}
-
-/* ------------------------
-  Section spacing & text
-------------------------- */
-section {
-  margin: 100px 0;
-  padding: 20px 0;
   position: relative;
 }
 
-p {
-  font-size: 1.1rem;
-  color: #333;
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+  max-width: 800px;
+  position: relative;
 }
 
-/* ------------------------
-  Charts
-------------------------- */
-svg {
-  width: 100%;
-  height: 450px;
-  overflow: visible; /* for tooltips/labels */
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  margin-bottom: 20px;
+.hero-sub {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-style: italic;
+  font-weight: 300;
+  color: #b8b0a8;
+  max-width: 560px;
+  margin-top: 20px;
+  line-height: 1.6;
+  position: relative;
 }
 
-/* ------------------------
-  Bars, slices, dots (for viz)
-------------------------- */
-rect {
-  stroke: #fff;
-  stroke-width: 1px;
-  cursor: pointer;
-  transition: opacity 0.2s;
+.byline {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 28px;
+  position: relative;
 }
 
-circle {
-  stroke: #fff;
-  stroke-width: 1.5px;
-}
-
-/* ------------------------
-  Tooltip
-------------------------- */
-.tooltip {
+.hero-arrow {
   position: absolute;
-  background-color: rgba(255,255,255,0.95);
-  padding: 8px 12px;
+  bottom: 32px;
+  font-size: 1.8rem;
+  color: var(--gold);
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(10px); }
+}
+
+/* =============================================
+   SHARED PROSE & LAYOUT
+   ============================================= */
+.prose-column {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+.prose-column p {
+  font-size: 1.15rem;
+  line-height: 1.85;
+  color: var(--ink-soft);
+  margin-bottom: 1.2em;
+}
+
+.prose-column p strong { color: var(--ink); font-weight: 700; }
+.prose-column p em    { font-style: italic; }
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+/* Section divider rule */
+.prose-column::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--gold);
+  margin-bottom: 28px;
+}
+
+/* =============================================
+   SECTION 0 — INTRO (two-col)
+   ============================================= */
+.section-intro {
+  background: var(--paper-warm);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.chart-column {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+  text-align: center;
+}
+
+.chart-column svg,
+.scrolly-sticky svg {
+  background: #fff;
   border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
-  pointer-events: none;
-  font-size: 0.9rem;
-  color: #111;
-  line-height: 1.4;
+  box-shadow: var(--shadow);
+  overflow: visible;
 }
 
-/* ------------------------
-  Legend
-------------------------- */
-svg g.legend rect {
-  stroke: #333;
-  stroke-width: 0.8;
+.chart-label {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 10px;
 }
 
-svg g.legend text {
-  font-size: 12px;
-  fill: #222;
+.chart-note {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--ink-faint);
+  margin-top: 8px;
 }
 
-/* ------------------------
-  Highlight / hover effects
-------------------------- */
-rect:hover, circle:hover {
-  opacity: 0.8;
+/* =============================================
+   SCROLLYTELLING LAYOUT
+   ============================================= */
+.scrolly-section {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 0;
+  min-height: 100vh;
 }
 
-.layer:hover {
-  filter: brightness(1.1);
-}
-
-/* ------------------------
-  Scroll animations & sticky
-------------------------- */
-.sticky {
+/* Sticky chart panel */
+.scrolly-sticky {
   position: sticky;
-  top: 20px;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px 20px 10px;
+  background: var(--paper);
+  border-right: 1px solid var(--rule);
+  overflow: hidden;
+  gap: 4px;
 }
 
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+/* SVGs inside sticky fill their flex container proportionally */
+.scrolly-sticky svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  overflow: visible;
+  background: transparent;
 }
 
-.fade-in.show {
+/* Chart divs each take equal share of leftover sticky height */
+#overall_chart,
+#life_chart,
+#negative_chart,
+#positive_chart {
+  width: 100%;
+  flex: 1 1 0;     /* grow/shrink equally */
+  min-height: 0;   /* critical: lets flex children shrink below intrinsic size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Tighten label/note so charts get more room */
+.scrolly-sticky .chart-label {
+  flex-shrink: 0;
+  margin-bottom: 2px;
+  margin-top: 4px;
+}
+.scrolly-sticky .chart-note {
+  flex-shrink: 0;
+  margin-top: 2px;
+  margin-bottom: 0;
+}
+
+/* Text steps */
+.scrolly-steps {
+  padding: 0 40px;
+}
+
+.step {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.step-content {
+  max-width: 420px;
+  opacity: 0.3;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.step-content.is-active {
   opacity: 1;
   transform: translateY(0);
 }
 
-.story{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:60px;
-  margin:120px 0;
+.step-content h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 14px;
+  line-height: 1.25;
 }
 
-.text{
-  font-size:1.15rem;
+.step-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--ink-soft);
+  margin-bottom: 1em;
 }
 
-.viz{
-  position:relative;
+.step-content::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 3px;
+  background: var(--gold);
+  margin-bottom: 16px;
 }
 
-.sticky{
-  position:sticky;
-  top:120px;
+/* Callout inline chips */
+.callout {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 3px;
+  font-weight: 700;
+  font-size: 0.9em;
+}
+.callout.red   { background: #fdecea; color: var(--red); }
+.callout.blue  { background: #e8f0f8; color: var(--blue); }
+.callout.green { background: #e6f4ec; color: var(--green); }
+
+/* Alternating section backgrounds */
+#scrolly-1 { background: var(--paper); }
+#scrolly-2 { background: var(--paper-warm); }
+#scrolly-3 { background: var(--paper); }
+
+#scrolly-2 .scrolly-sticky { background: var(--paper-warm); }
+#scrolly-3 .scrolly-sticky { background: var(--paper); }
+
+/* =============================================
+   SECTION 4 — INDIVIDUALS
+   ============================================= */
+.section-individuals {
+  background: var(--ink);
+  color: var(--paper);
 }
 
-header{
-  text-align:center;
-  margin-top:60px;
+.section-individuals .prose-column p { color: #b8b0a8; }
+.section-individuals .prose-column strong { color: var(--paper); }
+.section-individuals .section-title { color: var(--paper); }
+.section-individuals .prose-column::before { background: var(--gold); }
+
+.individuals-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+  align-items: start;
 }
 
-.source{
-  font-size:.9rem;
-  color:#666;
+.individuals-chart-wrap {
+  background: rgba(255,255,255,0.05);
+  border-radius: 8px;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
-.individuals_layout{
-  display:grid;
-  grid-template-columns: 2fr 1fr;
-  gap:40px;
-  align-items:start;
+.individuals-chart-wrap svg {
+  background: transparent;
+  overflow: visible;
 }
 
-#profile_panel{
-  background:#f7f7f7;
-  padding:20px;
-  border-radius:8px;
+/* Profile Panel */
+.profile-panel {
+  background: rgba(255,255,255,0.07);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 24px;
+  min-height: 300px;
+  color: var(--paper);
+  position: sticky;
+  top: 40px;
 }
 
-/* ------------------------
-  Color palette suggestions
-------------------------- */
-.negative { fill: #e63946; }
-.positive { fill: #2a9d8f; }
-.neutral { fill: #a8dadc; }
+.profile-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 280px;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.profile-placeholder span {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.profile-panel h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--gold);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.profile-panel p {
+  font-size: 0.9rem;
+  color: #c8c0b8;
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.profile-panel strong { color: var(--paper); }
+
+.profile-panel hr {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin: 12px 0;
+}
+
+.profile-panel svg text { fill: #c8c0b8; }
+.profile-panel svg line { stroke: rgba(255,255,255,0.2); }
+.profile-panel svg circle { fill: var(--gold); }
+
+/* Legend for individuals */
+.legend-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 12px;
+  font-size: 0.82rem;
+  color: #b8b0a8;
+}
+
+.legend-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+/* =============================================
+   CONCLUSION
+   ============================================= */
+.section-conclusion {
+  background: var(--paper-warm);
+  border-top: 1px solid var(--rule);
+}
+
+.source {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  line-height: 1.7;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+
+.source a { color: var(--ink-faint); }
+
+/* =============================================
+   TOOLTIP (shared)
+   ============================================= */
+.tooltip {
+  position: fixed;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 10px 14px;
+  border-radius: 5px;
+  pointer-events: none;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 9999;
+  max-width: 220px;
+}
+
+/* =============================================
+   FADE-IN (intersection observer)
+   ============================================= */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =============================================
+   D3 AXIS STYLES
+   ============================================= */
+.tick text {
+  font-family: var(--font-body);
+  font-size: 11px;
+  fill: var(--ink-soft);
+}
+
+.tick line, .domain { stroke: var(--rule); }
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 768px) {
+  .scrolly-section {
+    grid-template-columns: 1fr;
+  }
+
+  .scrolly-sticky {
+    position: relative;
+    height: auto;
+    min-height: 50vh;
+    border-right: none;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .scrolly-steps { padding: 0 20px; }
+  .step { min-height: 60vh; }
+
+  .individuals-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-panel { position: static; }
+}

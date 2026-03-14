@@ -1,72 +1,280 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adolescents, Social Media & Mental Health</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<script src="https://d3js.org/d3.v6.js"></script>
-<link rel="stylesheet" href="style.css">
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-label">A Data Story</div>
+    <h1>Social Media &amp; Adolescent Well-Being</h1>
+    <p class="hero-sub">How adolescents feel about social media, and what reserach says about its potential effects on mental health</p>
+    <p class="byline">by Maya McPartland &nbsp;·&nbsp; Data: Pew Research Center & Kaggle</p>
+    <div class="hero-arrow">↓</div>
+  </header>
 
-<h1>Teens, Social Media, and Mental Health</h1>
-<h2>by Maya McPartland</h2>
+  <!-- ========== SECTION 0: INTRO PIE ========== -->
+  <section class="section-intro">
+    <div class="prose-column">
+      <h2 class="section-title">Social Media and Adolescents</h2>
+      <p>
+        Social media has become central to the lives of many adolescents. Debates about whether it is 
+        <em>good</em> or <em>bad</em> for young people have intensified in recent years. In response to 
+        growing concerns about its effects, <a href="https://www.bbc.com/news/articles/cwyp9d3ddqyo" target="_blank">Australia implemented a world-first ban</a> on December 10 2025, 
+        prohibiting children under 16 from accessing major social media platforms. Companies that fail 
+        to enforce the restriction can face fines of up to A$49.5 million.
+      </p>
 
-<section>
-  <p>
-    Social media is a constant part of teen life. But do teens actually feel
-    that it helps or harms them?
-  </p>
+      <p>
+        Amid these debates, it helps to understand what adolescents themselves think and feel about how much 
+        time they spend online. To answer that question, researchers at 
+        <a href="https://www.pewresearch.org/" target="_blank">Pew Research Center</a> surveyed U.S. adolescents 
+        ages 13–17 about their social media habits and how those habits affect their daily lives.
+      </p>
+    </div>
+    <div class="chart-column fade-in" id="intro_chart_wrap">
+      <div class="chart-label">Teen Self-Reported Social Media Usage</div>
+      <div id="intro_chart"></div>
+      <div class="chart-note">% of teens who say they spend ____ time on social media</div>
+    </div>
+    <div class="prose-column">
+      <p>
+        Nearly 50% of teens say they spend <strong>too much</strong> time on social media.
+        But this alone does not tell the whole story. To understand how social media may affect
+        adolescents’ lives, we also need to look at how usage relates to factors like sleep,
+        relationships, and mental well-being. 
+      </p>
+    </div>
+  </section>
 
-  <div id="intro_chart"></div>
-</section>
-
-<section>
-  <h2>How Teens View Social Media</h2>
-
-  <div id="overall_chart"></div>
-  <div id="life_chart"></div>
-
-  <p>
-    Teens report mixed impacts across different areas of life.
-    Next, we explore the negative experiences in more detail.
-  </p>
-</section>
-
-<section>
-  <div class="individuals_layout">
-
-    <div id="individuals_chart"></div>
-
-    <div id="profile_panel">
-        <h3>Teen Profile</h3>
-        <p>Click a point to explore a participant.</p>
+  <!-- ========== SECTION 1: OVERALL + LIFE IMPACTS ========== -->
+  <section class="scrolly-section" id="scrolly-1">
+    <div class="scrolly-sticky" id="sticky-1">
+      <div class="chart-label" id="sticky-1-label">Overall Perception</div>
+      <div id="overall_chart"></div>
+      <div id="life_chart" style="display:none;"></div>
+      <div class="chart-note" id="sticky-1-note">Click a bar to highlight related life impacts below</div>
     </div>
 
+    <div class="scrolly-steps">
+      <div class="step" data-step="1-1">
+        <div class="step-content">
+          <h2>How teens view social media's overall effect</h2>
+          <p>
+            When asked about social media's effect on people their age, teens are more
+            negative than positive. However, this significantly differs from their views of
+            their <em>own</em> experience.
+          </p>
+          <p>
+            <span class="callout red">Red bars</span> show perceptions of social media's
+            effect on teens in general. <span class="callout blue">Blue bars</span> show
+            how teens feel about its effect on themselves personally.
+          </p>
+        </div>
+      </div>
+
+      <div class="step" data-step="1-2">
+        <div class="step-content">
+          <h2>The personal vs. societal gap</h2>
+          <p>
+            Notice that teens are more likely to say social media has a <strong>mostly negative</strong>
+            effect on other teens, but a neutral or positive effect on themselves. This pattern reflects a common bias: 
+            people often assume that others are more vulnerable to negative influences than they are.
+          </p>
+          <p>
+            Click any bar to see which life areas are most affected.
+          </p>
+        </div>
+      </div>
+
+      <div class="step" data-step="1-3">
+        <div class="step-content">
+          <h2>Impacts across different life areas</h2>
+          <p>
+            Social media touches nearly every dimension of adolescent life. This chart shows
+            how teens rate social media's impact (from <strong>helped a lot</strong> to
+            <strong>hurt a lot</strong>) on areas like mental health, friendships, and academics.
+          </p>
+          <p>
+            Click a section in the top chart to highlight the corresponding positive or negative
+            segments below.
+          </p>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<section>
-  <h2>Negative Experiences</h2>
-  <div id="negative_chart"></div>
-</section>
+  <!-- ========== SECTION 2: SCROLLYTELLING — NEGATIVE ========== -->
+  <section class="scrolly-section" id="scrolly-2">
+    <div class="scrolly-sticky" id="sticky-2">
+      <div class="chart-label">Negative Experiences Online</div>
+      <div id="negative_chart"></div>
+      <div class="chart-note">Hover any bar for exact percentages</div>
+    </div>
 
-<section>
-  <h2>Positive Experiences</h2>
-  <div id="positive_chart"></div>
-</section>
+    <div class="scrolly-steps">
+      <div class="step" data-step="2-1">
+        <div class="step-content">
+          <h2>The Negatives</h2>
+          <p>
+            Social media has been repeatedly associated with a range of negative outcomes, several of which
+            researchers examined in this survey.
+          </p>
+        </div>
+      </div>
 
-<section>
-<h2>Conclusion</h2>
+      <div class="step" data-step="2-2">
+        <div class="step-content">
+          <h2>Drama and pressure top the list</h2>
+          <p>
+            The most common negative experiences relate to social pressure: feeling left out, pressure to post,
+            and dealing with online drama.
+          </p>
+          <p>
+            Bars are sorted from most to least common total negative experience.
+          </p>
+        </div>
+      </div>
 
-<p>
-Social media is neither purely harmful nor purely beneficial for teens.
-While it creates pressure and drama for many users, it also provides
-connection, creativity, and support.
-</p>
+      <div class="step" data-step="2-3">
+        <div class="step-content">
+          <h2>Intensity matters</h2>
+          <p>
+            The darker red segments show teens who felt these effects <strong>"a lot"</strong>, respresenting
+            a small but meaningful proportion for several categories. This response
+            indicates these issues are not a minor inconvenience but a significant stressor.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<p class="source"> Data source: Pew Research Center </p>
+  <!-- ========== SECTION 3: SCROLLYTELLING — POSITIVE ========== -->
+  <section class="scrolly-section" id="scrolly-3">
+    <div class="scrolly-sticky" id="sticky-3">
+      <div class="chart-label">Positive Experiences Online</div>
+      <div id="positive_chart"></div>
+      <div class="chart-note">Hover any bar for exact percentages</div>
+    </div>
 
-</section>
+    <div class="scrolly-steps">
+      <div class="step" data-step="3-1">
+        <div class="step-content">
+          <h2>But it's not all bad</h2>
+          <p>
+            Social media is also a genuine source of connection, creative expression, and support for many adolescents. 
+            It can help them stay connected with friends, share their identities, and build communities online.
+          </p>
+        </div>
+      </div>
 
-<script src="js/viz0_intro.js"></script>
-<script src="js/viz1_overall.js"></script>
-<script src="js/viz2_negative.js"></script>
-<script src="js/viz3_positive.js"></script>
-<script src="js/viz4_individuals.js"></script>
-<script src="js/main.js"></script>
+      <div class="step" data-step="3-2">
+        <div class="step-content">
+          <h2>Connection and Creativity</h2>
+          <p>
+            Feeling more connected to friends' lives and finding opportunity for
+            creative expression tops the list of positive experiences. For many teens,
+            social media expands their social world in meaningful ways.
+          </p>
+        </div>
+      </div>
+
+      <div class="step" data-step="3-3">
+        <div class="step-content">
+          <h2>Stronger Positives</h2>
+          <p>
+            In this survey, adolescents were generally more likely to report positive
+            experiences than negative ones. While many do encounter pressures and
+            frustrations online, larger shares say social media helps them feel more
+            connected to friends, express themselves creatively, and stay engaged with
+            the world around them.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 4: INDIVIDUALS ========== -->
+  <section class="section-individuals">
+    <div class="prose-column">
+      <h2 class="section-title">Beyond the statistics: individual stories</h2>
+      <p>
+        Aggregate data tells us about trends, but every dot below represents a real student.
+        Each circle's <strong>size</strong> reflects daily social media usage hours.
+        Color indicates <strong>gender</strong>. Position on the x-axis shows their
+        <strong>mental health score</strong> (1–10, higher is better).
+      </p>
+      <p>
+        <strong>Click any dot</strong> to see that student's profile.
+      </p>
+    </div>
+
+    <div class="individuals-layout">
+      <div class="individuals-chart-wrap fade-in">
+        <div id="individuals_chart"></div>
+      </div>
+      <div id="profile_panel" class="profile-panel">
+        <div class="profile-placeholder">
+          <span>←</span>
+          <p>Click a dot to explore a student's profile</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONCLUSION ========== -->
+  <section class="section-conclusion">
+    <div class="prose-column">
+      <h2 class="section-title">So what's the verdict?</h2>
+      <p>
+        The data paints a nuanced picture. Social media is woven into the fabric of teen
+        life, and it shapes that life in both meaningful and troubling ways. Teens themselves
+        are aware of this tension: they use it, they question it, and many wish they used it less.
+      </p>
+      <p>
+        While negative effects such as social pressure and exposure to drama are common,
+        the survey also highlights that many teens report positive outcomes. Connection
+        with friends, opportunities for creative expression, and access to supportive communities
+        are frequently cited as meaningful benefits. For most teens, the positive effects
+        often outweigh the negatives, though the balance varies across individuals and contexts.
+      </p>
+      <p>
+        Many questions remain unanswered, and further research is needed to better understand
+        how social media shapes adolescent well-being over time. As social media and technology
+        continue to evolve, it is increasingly important to examine the complex relationship
+        between online experiences and teens’ mental, social, and emotional development.
+      </p>
+      <p class="source">
+        <strong>Data sources:</strong>
+        <a href="https://www.kaggle.com/datasets/adilshamim8/social-media-addiction-vs-relationships" target="_blank">
+            Social Media Addiction vs Relationships (Kaggle)
+        </a>
+        and
+        <a href="https://www.pewresearch.org/internet/2025/04/22/teens-social-media-and-mental-health/" target="_blank">
+            Pew Research Center – Teens, Social Media, and Mental Health (2025)
+        </a>.
+        <br><br>
+        Story inspired by Pew Research reporting.
+        Visualizations built with
+        <a href="https://d3js.org/" target="_blank">D3.js v6</a>.
+        AI (Claude) used for debugging and scrollytelling website implementation.
+        </p>
+    </div>
+  </section>
+
+  <script src="https://d3js.org/d3.v6.js"></script>
+  <script src="js/viz0_intro.js"></script>
+  <script src="js/viz1_overall.js"></script>
+  <script src="js/viz2_negative.js"></script>
+  <script src="js/viz3_positive.js"></script>
+  <script src="js/viz4_individuals.js"></script>
+  <script src="js/scrolly.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
