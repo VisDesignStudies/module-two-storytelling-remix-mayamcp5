@@ -1,6 +1,7 @@
 # Making Of: Social Media & Adolescent Well-Being Data Story
 **by Maya McPartland**
 
+View it here: https://visdesignstudies.github.io/module-two-storytelling-remix-mayamcp5/ 
 ---
 
 ## The Original Story
